@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
 import nl.omererdem.madlvl5t2.R
 
 /**
@@ -26,6 +27,11 @@ class GameBacklogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity = (activity as MainActivity)
+        activity.setTitle("Game Backlog")
+        activity.enableBackButton(false)
+        activity.enableDelete(true)
 
         view.findViewById<FloatingActionButton>(R.id.fabAddGame).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)

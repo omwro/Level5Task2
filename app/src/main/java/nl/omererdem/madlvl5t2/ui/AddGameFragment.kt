@@ -26,6 +26,11 @@ class AddGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val activity = (activity as MainActivity)
+        activity.setTitle("Add Game")
+        activity.enableBackButton(true)
+        activity.enableDelete(false)
+
         view.findViewById<FloatingActionButton>(R.id.fabSaveGame).setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
