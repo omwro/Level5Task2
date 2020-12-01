@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.*
 import nl.OmerErdem.madlvl5t2.model.Game
 import nl.OmerErdem.madlvl5t2.model.GameDao
+import nl.OmerErdem.madlvl5t2.utils.Converters
 
 @Database(entities = [Game::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class GameRoomDatabase: RoomDatabase() {
     abstract fun gameDao(): GameDao
 

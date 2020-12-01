@@ -4,7 +4,7 @@ import androidx.room.*
 import java.util.*
 
 @Entity(tableName = "gameTable")
-data class Game (
+class Game (
     @ColumnInfo(name = "title")
     var title: String,
 
@@ -12,5 +12,9 @@ data class Game (
     var platform: String,
 
     @ColumnInfo(name = "releaseDate")
-    var releaseDate: Date
+    var releaseDate: Date,
+
+    @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
+    var id: Long?
 )
