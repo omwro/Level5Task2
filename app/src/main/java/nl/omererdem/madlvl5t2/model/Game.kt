@@ -16,5 +16,9 @@ class Game (
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
-    var id: Long?
-)
+    var id: Long? = null
+) {
+    override fun toString(): String {
+        return "Game(title='$title', platform='$platform', releaseDate=$releaseDate, id=$id)"
+    }
+}

@@ -1,12 +1,16 @@
 package nl.OmerErdem.madlvl5t2.ui
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_add_game.*
+import nl.OmerErdem.madlvl5t2.model.GameViewModel
+import nl.OmerErdem.madlvl5t2.utils.GameAdapter
 import nl.omererdem.madlvl5t2.R
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun resetGames() {
+        val viewModel: GameViewModel by viewModels()
+        viewModel.deleteAllGames()
+    }
+
     fun setTitle(title: String) {
         this.title = title
     }
@@ -46,9 +55,5 @@ class MainActivity : AppCompatActivity() {
 
     fun enableDelete(boolean: Boolean) {
         menu?.findItem(R.id.actionDeleteBtn)?.isVisible = boolean
-    }
-
-    private fun resetGames() {
-
     }
 }
