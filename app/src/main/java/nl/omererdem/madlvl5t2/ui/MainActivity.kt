@@ -1,16 +1,11 @@
 package nl.OmerErdem.madlvl5t2.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_add_game.*
 import nl.OmerErdem.madlvl5t2.model.GameViewModel
-import nl.OmerErdem.madlvl5t2.utils.GameAdapter
 import nl.omererdem.madlvl5t2.R
 
 class MainActivity : AppCompatActivity() {
