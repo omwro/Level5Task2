@@ -16,9 +16,6 @@ import nl.OmerErdem.madlvl5t2.model.GameViewModel
 import nl.omererdem.madlvl5t2.R
 import java.util.*
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class AddGameFragment : Fragment() {
     private val viewModel: GameViewModel by viewModels()
 
@@ -32,24 +29,20 @@ class AddGameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView(view)
+    }
 
+    private fun initView(view: View) {
+        // Set toolbar values
         val activity = (activity as MainActivity)
         activity.setTitle("Add Game")
         activity.enableBackButton(true)
         activity.enableDelete(false)
 
+        // Save FAB click listener
         view.findViewById<FloatingActionButton>(R.id.fabSaveGame).setOnClickListener {
             if (formIsValid(activity)) {
-                val game = Game(
-                    etTitle.text.toString(),
-                    etPlatform.text.toString(),
-                    Date(
-                        etYear.text.toString().toInt(),
-                        etMonth.text.toString().toInt(),
-                        etDay.text.toString().toInt()
-                    )
-                )
-                viewModel.insertGame(game)
+                val game = saveGame()
                 games.add(game)
                 findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
                 Toast.makeText(activity.applicationContext, game.title+" has been added", Toast.LENGTH_LONG).show()
@@ -58,6 +51,22 @@ class AddGameFragment : Fragment() {
         }
     }
 
+    private fun saveGame(): Game {
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.YEAR, etYear.text.toString().toInt())
+        calendar.set(Calendar.MONTH, etMonth.text.toString().toInt() -1)
+        calendar.set(Calendar.DAY_OF_MONTH, etDay.text.toString().toInt())
+        val game = Game(
+            etTitle.text.toString(),
+            etPlatform.text.toString(),
+            calendar
+        )
+        viewModel.insertGame(game)
+        Log.i("Game", game.toString())
+        return game
+    }
+
+    // Validating the forms and Toasts error response
     private fun formIsValid(activity: MainActivity): Boolean {
         val context = activity.applicationContext
         try {

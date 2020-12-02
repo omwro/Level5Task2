@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="80dp"
     android:layout_gravity="center"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
@@ -20,6 +20,8 @@
             android:id="@+id/tvTitle"
             android:text="@string/text_placeholder"
             android:layout_weight="2"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout
@@ -31,6 +33,7 @@
                 android:id="@+id/tvPlatform"
                 android:text="@string/text_placeholder"
                 android:layout_weight="1"
+                android:textSize="16sp"
                 android:gravity="bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -40,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="16sp"
                 android:gravity="end|bottom"
                 android:text="@string/text_placeholder" />
         </LinearLayout>

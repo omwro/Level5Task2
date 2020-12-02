@@ -9,7 +9,6 @@ import nl.OmerErdem.madlvl5t2.model.GameViewModel
 import nl.omererdem.madlvl5t2.R
 
 class MainActivity : AppCompatActivity() {
-
     private var menu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,29 +24,38 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    // Override the delete all button action
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.actionDeleteBtn -> {
                 resetGames()
                 return true
             }
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    // Reset all the games in the backlog
     private fun resetGames() {
         val viewModel: GameViewModel by viewModels()
         viewModel.deleteAllGames()
     }
 
+    // Set a title text in the toolbar
     fun setTitle(title: String) {
         this.title = title
     }
 
+    // Enable the back button in the toolbar
     fun enableBackButton(boolean: Boolean) {
         supportActionBar?.setDisplayHomeAsUpEnabled(boolean)
     }
 
+    // Enable the Delete trash button in the toolbar
     fun enableDelete(boolean: Boolean) {
         menu?.findItem(R.id.actionDeleteBtn)?.isVisible = boolean
     }

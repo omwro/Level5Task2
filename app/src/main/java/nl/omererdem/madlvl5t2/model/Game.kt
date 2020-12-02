@@ -12,7 +12,7 @@ class Game (
     var platform: String,
 
     @ColumnInfo(name = "releaseDate")
-    var releaseDate: Date,
+    var releaseDate: Calendar,
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
