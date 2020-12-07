@@ -14,6 +14,8 @@ import kotlinx.android.synthetic.main.fragment_add_game.*
 import nl.OmerErdem.madlvl5t2.model.Game
 import nl.OmerErdem.madlvl5t2.model.GameViewModel
 import nl.omererdem.madlvl5t2.R
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AddGameFragment : Fragment() {
@@ -83,11 +85,11 @@ class AddGameFragment : Fragment() {
                 return false
             }
             try {
-                Calendar.getInstance().set(
-                    etYear.text.toString().toInt(),
-                    etMonth.text.toString().toInt(),
-                    etDay.text.toString().toInt()
-                )
+                val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+                formatter.parse("" +
+                        "${etDay.text.toString().toInt()}-" +
+                        "${etMonth.text.toString().toInt()}-" +
+                        "${etYear.text.toString().toInt()}")
             } catch (e: Exception) {
                 Toast.makeText(context, "Please fill in a valid Date", Toast.LENGTH_LONG).show()
                 return false

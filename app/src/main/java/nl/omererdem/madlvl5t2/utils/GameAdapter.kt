@@ -15,7 +15,7 @@ class GameAdapter(private val games: List<Game>) : RecyclerView.Adapter<GameAdap
             itemView.tvTitle.text = game.title
             itemView.tvPlatform.text = game.platform
             val date = game.releaseDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-            itemView.tvReleaseDate.text = "Release: ${date.dayOfMonth} ${date.month} ${date.year}"
+            itemView.tvReleaseDate.text = itemView.resources.getString(R.string.release,"${date.dayOfMonth} ${date.month} ${date.year}")
         }
     }
 

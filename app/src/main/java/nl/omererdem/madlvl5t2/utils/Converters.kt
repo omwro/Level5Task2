@@ -10,9 +10,6 @@ class Converters {
             calendar.timeInMillis = value
         }
     }
-//    fun fromTimestamp(value: Long?): Calendar? {
-//        return value?.let {  Calendar.getInstance().timeInMillis = it * 1000L }
-//    }
 
     @TypeConverter
     fun toTimestamp(calendar: Calendar?): Long? {
