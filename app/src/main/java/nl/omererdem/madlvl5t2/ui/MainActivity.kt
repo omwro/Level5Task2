@@ -9,7 +9,7 @@ import nl.OmerErdem.madlvl5t2.model.GameViewModel
 import nl.omererdem.madlvl5t2.R
 
 class MainActivity : AppCompatActivity() {
-    private var menu: Menu? = null
+    private lateinit var menu: Menu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +57,6 @@ class MainActivity : AppCompatActivity() {
 
     // Enable the Delete trash button in the toolbar
     fun enableDelete(boolean: Boolean) {
-        menu?.findItem(R.id.actionDeleteBtn)?.isVisible = boolean
+        menu.findItem(R.id.actionDeleteBtn)?.isVisible = boolean
     }
 }
